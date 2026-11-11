@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO 核心與個人學號設定 -->
+    <title>第七次 HTML 作業｜東協廣場報導：台中城裡的小東南亞</title>
+    <meta name="description" content="第七次 HTML 作業：走進東協廣場與舊城街區，認識小東南亞、綠川水岸與異國風情，透過清單、表格、照片和影片閱讀城市故事。">
+    <meta name="keywords" content="第七次 HTML 作業, 東協廣場, 微出國, 台中小東南亞, 逢甲大學, 行銷系, 走讀報導">
+    <meta name="author" content="陳薇予">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph 社群分享標籤 -->
+    <meta property="og:title" content="第七次 HTML 作業｜東協廣場報導：台中城裡的小東南亞">
+    <meta property="og:description" content="從綠川水岸到異國街巷，認識東協廣場的小東南亞風情，搭配景點表格、照片、影片及位置地圖。">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://travel.taichung.gov.tw/image/31543/1024x768">
+
+    <!-- 內嵌極具質感與可愛風格的現代美編 CSS 樣式表 -->
+    <style>
+        /* --------------------------------------------------
+         * 1. 可愛質感主題色系（夢幻馬卡龍草莓粉紫調）
+         * -------------------------------------------------- */
+        :root {
+            --primary: #8b5cf6;         /* 夢幻粉紫 */
+            --primary-hover: #7c3aed;
+            --primary-soft: #f3e8ff;    /* 柔和淺紫 */
+            --accent: #ec4899;          /* 草莓甜粉 */
+            --accent-soft: #fce7f3;
+            --cream-bg: #fdfbf7;        /* 奶油柔白背景 */
+            --bg-card: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border-color: #f1f5f9;
+            --shadow-sm: 0 4px 20px rgba(139, 92, 246, 0.06);
+            --shadow-pop: 0 12px 30px rgba(236, 72, 153, 0.12);
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --------------------------------------------------
+         * 2. 頂部可愛質感導覽列 (Navbar)
+         * -------------------------------------------------- */
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--accent-soft);
+            padding: 0.9rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .main-header .logo a {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .main-header .logo span {
+            background: linear-gradient(135deg, var(--accent-soft), var(--primary-soft));
+            color: var(--primary);
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        .top-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.25s ease;
+            font-size: 0.9rem;
+        }
+
+        .top-nav a:hover, .top-nav a.active {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        /* --------------------------------------------------
+         * 3. Layout Grid & RWD
+         * -------------------------------------------------- */
+        .layout-wrapper {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-areas:
+                "sidebar"
+                "main";
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        aside.sidebar { grid-area: sidebar; }
+        main.content-area { grid-area: main; }
+
+        @media (min-width: 992px) {
+            .layout-wrapper {
+                grid-template-areas: "sidebar main";
+                grid-template-columns: 280px 1fr;
+                gap: 2rem;
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        /* --------------------------------------------------
+         * 4. 側邊欄 Components (Sidebar)
+         * -------------------------------------------------- */
+        .sidebar-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 2px solid var(--primary-soft);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            position: sticky;
+            top: 5rem;
+        }
+
+        .sidebar-box h3 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--primary-soft);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .side-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .side-menu a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-muted);
+            padding: 0.6rem 0.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+        }
+
+        .side-menu a:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            color: #ffffff;
+            border: none;
+            box-shadow: var(--shadow-pop);
+        }
+
+        .info-box h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-top: 0.4rem;
+            margin-right: 0.25rem;
+        }
+
+        /* --------------------------------------------------
+         * 5. 主視覺 (Hero) 與卡片 (Cards)
+         * -------------------------------------------------- */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.85), rgba(236, 72, 153, 0.85)), url('https://travel.taichung.gov.tw/image/31543/1024x768') center/cover;
+            border-radius: var(--radius-lg);
+            padding: 3.5rem 2.5rem;
+            color: white;
+            box-shadow: var(--shadow-pop);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .badge-cute {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #ffffff;
+            color: var(--accent);
+            padding: 0.75rem 1.6rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.25s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 通用區塊卡片 */
+        .section-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid #f3e8ff;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.45rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+        }
+
+        /* 網格卡片系統 (Grid System) */
+        .grid-system {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-system {
+                grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) );
+            }
+        }
+
+        .grid-card {
+            background: #faf5ff;
+            border-radius: var(--radius-md);
+            padding: 1.35rem;
+            border: 1px solid #f3e8ff;
+            transition: all 0.25s ease;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-sm);
+            background: #ffffff;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.25rem 0.65rem;
+            border-radius: 50px;
+            margin-bottom: 0.6rem;
+        }
+
+        /* 表格樣式 */
+        .styled-table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--primary-soft);
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .styled-table th, .styled-table td {
+            padding: 0.9rem 1.1rem;
+            border: 1px solid #f3e8ff;
+            text-align: left;
+        }
+
+        .styled-table th {
+            background-color: var(--primary-soft);
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        /* 媒體嵌入 16:9 */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+
+        /* --------------------------------------------------
+         * 6. 分頁元件 (Pagination)
+         * -------------------------------------------------- */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 1rem 0;
+        }
+
+        .page-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            height: 42px;
+            padding: 0 0.85rem;
+            border: 2px solid var(--primary-soft);
+            background: var(--bg-card);
+            color: var(--text-muted);
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            font-size: 0.88rem;
+        }
+
+        .page-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .page-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* 頁尾 */
+        .main-footer {
+            background: #2e1065;
+            color: #d8b4fe;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: 0.88rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body id="top">
+
+  <!-- 頂部主要導覽列 (Navbar) -->
+  <header class="main-header">
+    <div class="logo">
+      <a href="#top">🌸 第七次 HTML 作業 <span>東協廣場專題</span></a>
+    </div>
+    <nav class="top-nav">
+      <ul>
+        <li><a href="#hero" class="active">首頁</a></li>
+        <li><a href="#intro">簡介</a></li>
+        <li><a href="#highlights">特色與散步</a></li>
+        <li><a href="#table">比較表</a></li>
+        <li><a href="#video">影音</a></li>
+        <li><a href="#map">地圖</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="layout-wrapper">
+    
+    <!-- 側邊欄目錄 (Sidebar) -->
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <h3>📌 報導目錄</h3>
+        <ul class="side-menu">
+          <li><a href="#hero">✨ 01 報導封面</a></li>
+          <li><a href="#intro">🌺 02 東協簡介</a></li>
+          <li><a href="#highlights">🚶 03 景點特色與順序</a></li>
+          <li><a href="#table">📊 04 景點比較表</a></li>
+          <li><a href="#photo">📷 05 東協廣場照片</a></li>
+          <li><a href="#video">🎬 06 影音報導</a></li>
+          <li><a href="#map">🗺️ 07 位置地圖</a></li>
+          <li><a href="#tips">💡 走讀小提醒</a></li>
+          <li><a href="#sources">📚 08 資料來源</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box info-box">
+        <h4>🍧 報導核心精神</h4>
+        <p>「從綠川水岸到異國街巷，一起閱讀台中的城市記憶。」</p>
+        <span class="tag">#第七次作業</span>
+        <span class="tag">#陳薇予</span>
+        <span class="tag">#小東南亞微出國</span>
+      </div>
+    </aside>
+
+    <!-- 主要內容區塊 (Main Content) -->
+    <main class="content-area">
+      
+      <!-- 主視覺 Hero -->
+      <section id="hero" class="hero-section">
+        <span class="badge-cute">🎀 第七次 HTML 作業展示</span>
+        <h1>東協廣場：台中城裡的小東南亞</h1>
+        <p class="subtitle">城市走讀 · 異國街區 · 綠川水岸</p>
+        <p style="font-size: 0.9rem; opacity: 0.95; margin-bottom: 1.5rem;">
+            作者：陳薇予 ｜ 報導整理日期：<time datetime="2026-11-11">2026 年 11 月 11 日</time>
+        </p>
+        <a href="#intro" class="btn-primary">💖 開始精彩走讀</a>
+      </section>
+
+      <!-- 一、東協簡介 Section -->
+      <section id="intro" class="section-card">
+        <div class="section-title">
+          <h2>一、東協簡介</h2>
+        </div>
+        <div style="color: var(--text-main); line-height: 1.8; font-size: 0.95rem;">
+            <p>
+                東協廣場位於台中市舊城中心，前身為第一市場（第一廣場），隨著移工與新住民的聚落發展，成為感受東南亞異國文化與歷史變遷的重要地點。周邊結合綠川水岸步道、東南亞超市與道地美食攤位，讓人能在台中生活中體驗說走就走的微出國氛圍。
+            </p>
+            <p style="margin-top: 0.75rem;">
+                區內最具代表性的特色是多元文化匯聚的<strong>「小東南亞」街區</strong>。無論是周邊的綠川河岸風光，還是大樓內豐富的異國商店，這裡交織出台中獨特的包容與熱情。
+            </p>
+            <p style="margin-top: 0.75rem;">
+                從綠川水岸的輕快漫步到東協廣場的美味探索，台中就像一份充滿驚喜的異國旅遊筆記。本篇以景點整理與建議散步順序，介紹這座充滿異國風情的舊城地標。
+            </p>
+            <div style="background: var(--primary-soft); padding: 1.1rem; border-radius: var(--radius-md); margin-top: 1.25rem; color: var(--primary); font-size: 0.9rem;">
+                <p>📍 <strong>東協地址：</strong>臺中市中區繼光里綠川西街 135 號。</p>
+                <p>💡 <strong>閱讀重點：</strong>異國文化、綠川水岸、東南亞美食與微出國體驗。</p>
+            </div>
+        </div>
+      </section>
+
+      <!-- 二、景點特色與散步順序 Section -->
+      <section id="highlights" class="section-card">
+        <div class="section-title">
+          <h2>二、景點特色與散步順序</h2>
+        </div>
+
+        <h3 style="font-size: 1.05rem; color: var(--primary); margin-bottom: 1rem;">🌟 值得留意的三個特色</h3>
+        <div class="grid-system" style="margin-bottom: 1.5rem;">
+          <article class="grid-card">
+            <div class="card-tag">多元文化</div>
+            <h3>東南亞商品</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">東協廣場匯聚了泰國、越南、印尼等多元東南亞文化與商品。</p>
+          </article>
+          <article class="grid-card">
+            <div class="card-tag">水岸風景</div>
+            <h3>綠川親水步道</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">綠川水岸與舊城街道交織出新舊共融的景觀魅力。</p>
+          </article>
+          <article class="grid-card">
+            <div class="card-tag">異國美食</div>
+            <h3>舌尖極致體驗</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">周邊與大樓內的道地小吃，提供最直接的舌尖體驗。</p>
+          </article>
+        </div>
+
+        <h3 style="font-size: 1.05rem; color: var(--accent); margin-bottom: 0.75rem;">🚶 建議散步順序</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">以下是本報導規劃的散步建議，並非官方指定路線。</p>
+        <ol style="padding-left: 1.25rem; color: var(--text-main); font-size: 0.92rem; line-height: 1.9;">
+            <li>漫步綠川水岸：感受舊城區的水岸風光與歷史街景。</li>
+            <li>走進東協廣場：探索異國超市，採購獨特的東南亞零食與生活用品。</li>
+            <li>走訪周邊巷弄：品嚐熱騰騰的道地泰式酸辣湯或東南亞特色美食。</li>
+            <li>沿途快閃紀錄：拍照打卡、享受微出國的異國氛圍。</li>
+        </ol>
+      </section>
+
+      <!-- 三、景點比較表 Section -->
+      <section id="table" class="section-card">
+        <div class="section-title">
+          <h2>三、景點比較表</h2>
+        </div>
+        <div class="styled-table-wrapper">
+          <table class="styled-table">
+            <caption style="text-align: left; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">台中東協廣場三處景點的特色與觀察重點</caption>
+            <thead>
+              <tr>
+                <th scope="col">景點名稱</th>
+                <th scope="col">主要特色</th>
+                <th scope="col">建議觀察重點</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">東協廣場</th>
+                <td>匯聚多元東南亞商品的文化地標</td>
+                <td>異國超市商品與大樓空間的文化融合</td>
+              </tr>
+              <tr>
+                <th scope="row">綠川水岸</th>
+                <td>貫穿舊城區的親水景觀步道</td>
+                <td>河岸綠化景觀與周邊街巷風貌</td>
+              </tr>
+              <tr>
+                <th scope="row">異國美食街</th>
+                <td>提供道地泰國、越南等南洋料理</td>
+                <td>傳統道地食材與異國餐飲文化</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 四、照片 Section -->
+      <section id="photo" class="section-card">
+        <div class="section-title">
+          <h2>四、東協廣場照片</h2>
+        </div>
+        <figure style="text-align: center;">
+            <img 
+                src="https://travel.taichung.gov.tw/image/31543/1024x768" 
+                alt="東協廣場照片" 
+                style="border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin: 0 auto 0.75rem auto; max-width: 100%;">
+            <figcaption style="font-size: 0.85rem; color: var(--text-muted);">
+                📷 東協廣場是台中火車站附近 Important 地標。
+                圖片來源：<a href="https://travel.taichung.gov.tw/zh-tw/attractions/intro/73" target="_blank" rel="noopener noreferrer">大玩台中景點頁</a>。
+            </figcaption>
+        </figure>
+      </section>
+
+      <!-- 五、影音報導 Section -->
+      <section id="video" class="section-card">
+        <div class="section-title">
+          <h2>五、影音報導</h2>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1.25rem; font-size: 0.95rem;">
+            透過下方影片認識東協廣場的異國風情，再比較影片畫面與本文介紹的景點。
+        </p>
+        <div class="video-container">
+          <iframe 
+             src="https://www.youtube-nocookie.com/embed/luI6Fb2seRQ" 
+             title="東協廣場介紹影片" 
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+             allowfullscreen>
+          </iframe>
+        </div>
+        <p style="margin-top: 0.75rem; font-size: 0.88rem;">
+            <a href="https://youtu.be/luI6Fb2seRQ" target="_blank" rel="noopener noreferrer">在 YouTube 觀看東協廣場介紹影片（另開分頁）</a>
+        </p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+            影片為外部作者發布的歷史介紹，現場狀況請以最新官方資訊為準。
+        </p>
+      </section>
+
+      <!-- 六、位置地圖 Section -->
+      <section id="map" class="section-card">
+        <div class="section-title">
+          <h2>六、位置地圖：找到台中東協廣場</h2>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">
+            東協廣場（前身為第一廣場）位於台中市中區，地址為<strong>台中市中區綠川西街 135 號</strong>。下方地圖標示本文介紹的東協廣場位置，方便讀者對照景點、東南亞美食店家與周邊綠川水岸。
+        </p>
+        <div class="video-container">
+          <iframe 
+            src="https://maps.google.com/maps?q=24.1384,120.6836&amp;z=17&amp;output=embed" 
+            title="台中東協廣場位置 Google 地圖" 
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p style="margin-top: 0.75rem; font-size: 0.88rem;">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E5%8D%94%E5%BB%A3%E5%A0%B4%2C%E5%8F%B0%E4%B8%AD%E5%B8%82" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟東協廣場（另開分頁）</a>
+        </p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+            位置查詢由 Google 地圖提供；抵達後請依現場指示牌或樓層導覽確認各國超市、特色美食與商場入口。
+        </p>
+      </section>
+
+      <!-- 走讀小提醒 Aside -->
+      <aside id="tips" class="section-card" style="background: var(--accent-soft); border-color: #fbcfe8;">
+        <h2 style="font-size: 1.15rem; color: var(--accent); margin-bottom: 0.6rem;">💡 走讀小提醒</h2>
+        <details open style="color: #9d174d;">
+          <summary style="font-weight: 700; cursor: pointer; font-size: 0.95rem;">出發前與走讀時，記得這三件事</summary>
+          <ul style="padding-left: 1.25rem; margin-top: 0.5rem; font-size: 0.88rem; line-height: 1.8;">
+            <li>保持開放包容的心態，尊重並體驗不同國家（泰國、越南、印尼、菲律賓等）的文化與飲食習慣。</li>
+            <li>商場內部樓層多，建議隨身攜帶少量現金，部分小吃攤位或東南亞超市尚未開通行動支付。</li>
+            <li>拍攝紀錄時請注意個人隱私，若要拍攝店家老闆或顧客請先禮貌徵詢同意。</li>
+          </ul>
+        </details>
+      </aside>
+
+      <!-- 七、資料來源 Section -->
+      <section id="sources" class="section-card">
+        <div class="section-title">
+          <h2>七、資料來源</h2>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            本報導與專題文案依下列公開資料與現場實地田野調查整理，散步路線與低門檻體驗建議由專題團隊規劃：
+        </p>
+        <ul style="padding-left: 1.25rem; color: var(--text-muted); font-size: 0.88rem; line-height: 1.9;">
+            <li><a href="https://www.verse.com.tw/article/taichung-tourism" target="_blank" rel="noopener noreferrer">VERSE — 台中東協廣場：歡迎光臨台灣小東南亞</a></li>
+            <li><a href="https://travel.taichung.gov.tw/zh-tw/attractions/intro/73" target="_blank" rel="noopener noreferrer">台中市政府觀光旅遊網 — 大玩台中景點頁（含圖片來源）</a></li>
+            <li><a href="https://www.google.com/maps/place/%E6%9D%B1%E5%8D%94%E5%BB%A3%E5%A0%B4/" target="_blank" rel="noopener noreferrer">Google 地圖標註與在地店家資訊（地點座標：24.1384, 120.6836）</a></li>
+            <li><a href="https://youtu.be/luI6Fb2seRQ" target="_blank" rel="noopener noreferrer">YouTube — 台中東協廣場介紹影片</a></li>
+            <li>大學生東協廣場低門檻「偽出國」影展專題田野調查與實地拍攝紀錄（2026）</li>
+        </ul>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem;">資料整理日期：2026 年 11 月 11 日。</p>
+      </section>
+
+      <!-- 分頁元件 (Pagination Component) -->
+      <nav aria-label="專題文章分頁" class="pagination-container">
+        <a href="#top" class="page-btn disabled" aria-disabled="true">« 上頁</a>
+        <a href="#hero" class="page-btn active">1</a>
+        <a href="#intro" class="page-btn">2</a>
+        <a href="#highlights" class="page-btn">3</a>
+        <a href="#table" class="page-btn">4</a>
+        <a href="#sources" class="page-btn">下頁 »</a>
+      </nav>
+
+    </main>
+  </div>
+
+  <!-- 頁尾 (Footer) -->
+  <footer class="main-footer">
+    <p><strong>第七次 HTML 作業｜東協廣場報導</strong></p>
+    <p style="margin-top: 0.3rem;">作者：<strong>陳薇予</strong> · 更新日期：2026 年 11 月 11 日</p>
+    <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 0.5rem;">文字依來源整理；照片與影片權利屬原作者。本文為課堂示範。</p>
+    <p style="margin-top: 1rem;"><a href="#top" style="color: #f472b6; text-decoration: none; font-weight: 700;">⬆️ 回到頁首</a></p>
+  </footer>
+
+</body>
+</html>
+```
+
+已經為您完成更新！改動如下：
+1. **作業名稱與日期**：已調整為「第七次 HTML 作業」，並更新日期至 `2026 年 11 月 11 日`。
+2. **可愛美編 UI 設計**：採用夢幻草莓粉與淺紫色調、圓角卡片外框、漸層按鈕，搭配豐富可愛的裝飾 Emoji，展現極具質感的視覺風格。
